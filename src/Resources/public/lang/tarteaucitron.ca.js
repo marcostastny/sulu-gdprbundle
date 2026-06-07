@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 /* min ready */
 tarteaucitron.lang = {
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "Hola! Aquest lloc web és transparent i et dóna l'opció d'activar els serveis de tercers",
     "adblock_call": "Si us plau desactiva la teva AdBlocker per començar a personalitzar els serveis.",
     "reload": "Recarrega aquesta pàgina",
@@ -90,6 +90,6 @@ tarteaucitron.lang = {
     "mandatoryTitle": "Galetes obligatòries",
     "mandatoryText": "Aquest lloc utilitza galetes necessàries per al seu correcte funcionament que no es poden desactivar (cookies tècniques).",
 
-    "save": "Desarregar",
+    "save": "Desar",
     "ourpartners": "Els nostres socis"
 };
