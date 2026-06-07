@@ -7,9 +7,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('pixel-gdpr');
-        return $treeBuilder;
+        return new TreeBuilder('pixel-gdpr');
     }
 }
