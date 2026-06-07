@@ -11,3 +11,38 @@ gdpr.put_gdpr-settings:
     controller: pixel_gdpr.settings_route_controller::putAction
     defaults: { _format: json }
     requirements: { _format: json }
+
+gdpr.cget_gdpr-integrations:
+    path: /gdpr-integrations.{_format}
+    methods: GET
+    controller: pixel_gdpr.integration_route_controller::cgetAction
+    defaults: { _format: json }
+    requirements: { _format: json }
+
+gdpr.post_gdpr-integration:
+    path: /gdpr-integrations.{_format}
+    methods: POST
+    controller: pixel_gdpr.integration_route_controller::postAction
+    defaults: { _format: json }
+    requirements: { _format: json }
+
+gdpr.get_gdpr-integration:
+    path: /gdpr-integrations/{id}.{_format}
+    methods: GET
+    controller: pixel_gdpr.integration_route_controller::getAction
+    defaults: { _format: json }
+    requirements: { _format: json, id: \d+ }
+
+gdpr.put_gdpr-integration:
+    path: /gdpr-integrations/{id}.{_format}
+    methods: PUT
+    controller: pixel_gdpr.integration_route_controller::putAction
+    defaults: { _format: json }
+    requirements: { _format: json, id: \d+ }
+
+gdpr.delete_gdpr-integration:
+    path: /gdpr-integrations/{id}.{_format}
+    methods: DELETE
+    controller: pixel_gdpr.integration_route_controller::deleteAction
+    defaults: { _format: json }
+    requirements: { _format: json, id: \d+ }

@@ -24,10 +24,21 @@ class GDPRExtension extends Extension implements PrependExtensionInterface
                             __DIR__ . "/../Resources/config/forms",
                         ],
                     ],
+                    "lists" => [
+                        "directories" => [
+                            __DIR__ . "/../Resources/config/lists",
+                        ],
+                    ],
                     "resources" => [
                         "gdpr_settings" => [
                             "routes" => [
                                 "detail" => "gdpr.get_gdpr-settings",
+                            ],
+                        ],
+                        "gdpr_integrations" => [
+                            "routes" => [
+                                "list" => "gdpr.cget_gdpr-integrations",
+                                "detail" => "gdpr.get_gdpr-integration",
                             ],
                         ],
                     ],
