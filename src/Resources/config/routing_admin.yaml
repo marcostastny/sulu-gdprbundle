@@ -1,0 +1,13 @@
+gdpr.get_gdpr-settings:
+    path: /gdpr-settings/{id}.{_format}
+    methods: GET
+    controller: pixel_gdpr.settings_route_controller::getAction
+    defaults: { _format: json }
+    requirements: { _format: json }
+
+gdpr.put_gdpr-settings:
+    path: /gdpr-settings/{id}.{_format}
+    methods: PUT
+    controller: pixel_gdpr.settings_route_controller::putAction
+    defaults: { _format: json }
+    requirements: { _format: json }
