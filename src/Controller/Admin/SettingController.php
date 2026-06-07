@@ -6,8 +6,6 @@ namespace Pixel\GDPRBundle\Controller\Admin;
 
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\View\ViewHandlerInterface;
-use HandcraftedInTheAlps\RestRoutingBundle\Controller\Annotations\RouteResource;
-use HandcraftedInTheAlps\RestRoutingBundle\Routing\ClassResourceInterface;
 use Pixel\GDPRBundle\Entity\Setting;
 use Sulu\Component\Rest\AbstractRestController;
 use Sulu\Component\Security\SecuredControllerInterface;
@@ -15,10 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-/**
- * @RouteResource("gdpr-settings")
- */
-class SettingController extends AbstractRestController implements ClassResourceInterface, SecuredControllerInterface
+class SettingController extends AbstractRestController implements SecuredControllerInterface
 {
     private EntityManagerInterface $entityManager;
 
@@ -118,5 +113,10 @@ class SettingController extends AbstractRestController implements ClassResourceI
     public function getSecurityContext()
     {
         return Setting::SECURITY_CONTEXT;
+    }
+
+    public function getLocale(Request $request): ?string
+    {
+        return $request->query->get('locale');
     }
 }
