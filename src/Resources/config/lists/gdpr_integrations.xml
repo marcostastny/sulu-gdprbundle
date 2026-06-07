@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<list xmlns="http://schemas.sulu.io/list-builder/list">
+    <key>gdpr_integrations</key>
+
+    <joins name="translation">
+        <join>
+            <entity-name>Pixel\GDPRBundle\Entity\IntegrationTranslation</entity-name>
+            <field-name>Pixel\GDPRBundle\Entity\Integration.translations</field-name>
+            <method>LEFT</method>
+            <condition>Pixel\GDPRBundle\Entity\IntegrationTranslation.locale = :locale</condition>
+        </join>
+    </joins>
+
+    <properties>
+        <property name="id" visibility="no" translation="sulu_admin.id">
+            <field-name>id</field-name>
+            <entity-name>Pixel\GDPRBundle\Entity\Integration</entity-name>
+        </property>
+        <property name="serviceKey" visibility="always" searchability="yes" translation="gdpr_integration.key">
+            <field-name>serviceKey</field-name>
+            <entity-name>Pixel\GDPRBundle\Entity\Integration</entity-name>
+        </property>
+        <property name="title" visibility="always" searchability="yes" translation="gdpr_integration.title">
+            <field-name>title</field-name>
+            <entity-name>Pixel\GDPRBundle\Entity\IntegrationTranslation</entity-name>
+            <joins ref="translation"/>
+        </property>
+        <property name="type" visibility="always" translation="gdpr_integration.type">
+            <field-name>type</field-name>
+            <entity-name>Pixel\GDPRBundle\Entity\Integration</entity-name>
+        </property>
+        <property name="enabled" visibility="always" type="bool" translation="gdpr_integration.enabled">
+            <field-name>enabled</field-name>
+            <entity-name>Pixel\GDPRBundle\Entity\Integration</entity-name>
+        </property>
+    </properties>
+</list>

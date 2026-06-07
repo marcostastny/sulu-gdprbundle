@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd">
+    <key>gdpr_integration</key>
+    <properties>
+        <property name="serviceKey" type="text_line" colspan="6" mandatory="true">
+            <meta><title>gdpr_integration.key</title></meta>
+        </property>
+        <property name="type" type="single_select" colspan="6" mandatory="true">
+            <meta><title>gdpr_integration.type</title></meta>
+            <params>
+                <param name="default_value" value="preconfigured"/>
+                <param name="values" type="collection">
+                    <param name="preconfigured"><meta><title>gdpr_integration.type.preconfigured</title></meta></param>
+                    <param name="custom_inline"><meta><title>gdpr_integration.type.custom_inline</title></meta></param>
+                    <param name="custom_external"><meta><title>gdpr_integration.type.custom_external</title></meta></param>
+                    <param name="manual"><meta><title>gdpr_integration.type.manual</title></meta></param>
+                </param>
+            </params>
+        </property>
+
+        <property name="provider" type="single_select" colspan="6" visibleCondition="type == 'preconfigured'">
+            <meta><title>gdpr_integration.provider</title></meta>
+            <params>
+                <param name="default_value" value="gtag"/>
+                <param name="values" type="collection">
+                    <param name="gtag"><meta><title>gdpr_integration.provider.gtag</title></meta></param>
+                    <param name="googletagmanager"><meta><title>gdpr_integration.provider.googletagmanager</title></meta></param>
+                    <param name="googleads"><meta><title>gdpr_integration.provider.googleads</title></meta></param>
+                    <param name="bingads"><meta><title>gdpr_integration.provider.bingads</title></meta></param>
+                    <param name="facebookpixel"><meta><title>gdpr_integration.provider.facebookpixel</title></meta></param>
+                </param>
+            </params>
+        </property>
+        <property name="trackingId" type="text_line" colspan="6" visibleCondition="type == 'preconfigured'">
+            <meta><title>gdpr_integration.trackingId</title></meta>
+        </property>
+        <property name="scriptUrl" type="text_line" colspan="12" visibleCondition="type == 'custom_external'">
+            <meta><title>gdpr_integration.scriptUrl</title></meta>
+        </property>
+        <property name="inlineScript" type="text_area" colspan="12" visibleCondition="type == 'custom_inline'">
+            <meta><title>gdpr_integration.inlineScript</title></meta>
+        </property>
+
+        <section name="consent">
+            <meta><title>gdpr_integration.consent</title></meta>
+            <properties>
+                <property name="grantAnalyticsStorage" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.analytics_storage</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+                <property name="grantAdStorage" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.ad_storage</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+                <property name="grantAdUserData" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.ad_user_data</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+                <property name="grantAdPersonalization" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.ad_personalization</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+                <property name="grantFunctionalityStorage" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.functionality_storage</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+                <property name="grantPersonalizationStorage" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.personalization_storage</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+                <property name="grantSecurityStorage" type="checkbox" colspan="6">
+                    <meta><title>gdpr_integration.grant.security_storage</title></meta>
+                    <params><param name="default_value" value="false"/></params>
+                </property>
+            </properties>
+        </section>
+
+        <property name="enabled" type="checkbox" colspan="6">
+            <meta><title>gdpr_integration.enabled</title></meta>
+            <params><param name="default_value" value="true"/></params>
+        </property>
+
+        <section name="texts">
+            <meta><title>gdpr_integration.texts</title></meta>
+            <properties>
+                <property name="title" type="text_line" colspan="12">
+                    <meta><title>gdpr_integration.title</title></meta>
+                </property>
+                <property name="description" type="text_area" colspan="12">
+                    <meta><title>gdpr_integration.description</title></meta>
+                </property>
+            </properties>
+        </section>
+    </properties>
+</form>
