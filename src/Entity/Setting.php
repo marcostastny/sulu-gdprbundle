@@ -7,11 +7,9 @@ use JMS\Serializer\Annotation as Serializer;
 use Sulu\Component\Persistence\Model\AuditableInterface;
 use Sulu\Component\Persistence\Model\AuditableTrait;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="gdpr_settings")
- * @Serializer\ExclusionPolicy("all")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'gdpr_settings')]
+#[Serializer\ExclusionPolicy('all')]
 class Setting implements AuditableInterface
 {
     use AuditableTrait;
@@ -20,187 +18,126 @@ class Setting implements AuditableInterface
     public const FORM_KEY = "gdpr_settings";
     public const SECURITY_CONTEXT = "gdpr_settings.settings";
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     * @Serializer\Expose()
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    #[Serializer\Expose]
     private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $googleTagManager = null;
 
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $googleAnalyticsGtagJs = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $bingAds = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $pixelFacebook = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $googleAds = null;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $useCookieHandling = false;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $privacyUrl = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $bodyPosition = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $hashtag = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $cookieName = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $orientation = null;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $groupServices = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $showAlertSmall = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $cookielist = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $closePopup = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $showIcon = true;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $iconPosition = null;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $adblocker = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $denyAllCta = true;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $acceptAllCta = true;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $highPrivacy = true;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $handleBrowserDNTRequest = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $removeCredit = true;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $moreInfoLink = true;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $useExternalCss = false;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $useExternalJs = false;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Serializer\Expose]
     private ?string $readmoreLink = null;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $mandatory = true;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Serializer\Expose()
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Serializer\Expose]
     private ?bool $mandatoryCta = true;
 
     public function getId(): ?int
