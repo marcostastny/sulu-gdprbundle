@@ -140,6 +140,17 @@ class Setting implements AuditableInterface
     #[Serializer\Expose]
     private ?bool $mandatoryCta = true;
 
+    public function __construct()
+    {
+        // The AuditableTrait timestamps are non-nullable in Sulu 3 and are only
+        // set by the persistence listener on flush. This controller serializes
+        // unsaved Setting instances, so initialise them to avoid an
+        // "accessed before initialization" error. Doctrine hydrates persisted
+        // entities without invoking the constructor, so stored rows are unaffected.
+        $this->created = new \DateTimeImmutable();
+        $this->changed = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
