@@ -49,13 +49,11 @@ bin/console do:sch:up --force
 
 ## Bundle Config
 
-Define the Admin Api Route in `routes_admin.yaml`
+Import the bundle's Admin API routes in `routes_admin.yaml`
 ```yaml
-gdpr.setting_api:
-  type: rest
+gdpr_admin_api:
+  resource: '@GDPRBundle/Resources/config/routing_admin.yaml'
   prefix: /admin/api
-  resource: pixel_gdpr.settings_route_controller
-  name_prefix: gdpr.
 ```
 
 ## Use
