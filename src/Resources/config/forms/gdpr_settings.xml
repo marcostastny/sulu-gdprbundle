@@ -13,39 +13,6 @@
                 <param name="default_value" value="false"/>
             </params>
         </property>
-        <section name="services" visibleCondition="useCookieHandling == true">
-            <meta>
-                <title>gdpr_settings.services</title>
-            </meta>
-            <properties>
-                <property name="googleTagManager" type="text_line" colspan="4">
-                    <meta>
-                        <title>gdpr_settings.googleTagManager</title>
-                    </meta>
-                </property>
-                <property name="googleAnalyticsGtagJs" type="text_line" colspan="4">
-                    <meta>
-                        <title>gdpr_settings.googleAnalyticsGtagJs</title>
-                    </meta>
-                </property>
-
-                <property name="pixelFacebook" type="text_line" colspan="4">
-                    <meta>
-                        <title>gdpr_settings.pixelFacebook</title>
-                    </meta>
-                </property>
-                <property name="bingAds" type="text_line" colspan="4">
-                    <meta>
-                        <title>gdpr_settings.bingAds</title>
-                    </meta>
-                </property>
-                <property name="googleAds" type="text_line" colspan="4">
-                    <meta>
-                        <title>gdpr_settings.googleAds</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
         <section name="parameters" visibleCondition="useCookieHandling == true">
             <meta>
                 <title>gdpr_settings.parameters</title>

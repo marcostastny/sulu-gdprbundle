@@ -24,26 +24,6 @@ class Setting implements AuditableInterface
     #[Serializer\Expose]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Serializer\Expose]
-    private ?string $googleTagManager = null;
-
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Serializer\Expose]
-    private ?string $googleAnalyticsGtagJs = null;
-
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Serializer\Expose]
-    private ?string $bingAds = null;
-
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Serializer\Expose]
-    private ?string $pixelFacebook = null;
-
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Serializer\Expose]
-    private ?string $googleAds = null;
-
     #[ORM\Column(type: 'boolean', nullable: true)]
     #[Serializer\Expose]
     private ?bool $useCookieHandling = false;
@@ -154,36 +134,6 @@ class Setting implements AuditableInterface
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getGoogleTagManager(): ?string
-    {
-        return $this->googleTagManager;
-    }
-
-    public function setGoogleTagManager(?string $googleTagManager): void
-    {
-        $this->googleTagManager = $googleTagManager;
-    }
-
-    public function getGoogleAnalyticsGtagJs(): ?string
-    {
-        return $this->googleAnalyticsGtagJs;
-    }
-
-    public function setGoogleAnalyticsGtagJs(?string $googleAnalyticsGtagJs): void
-    {
-        $this->googleAnalyticsGtagJs = $googleAnalyticsGtagJs;
-    }
-
-    public function getPixelFacebook(): ?string
-    {
-        return $this->pixelFacebook;
-    }
-
-    public function setPixelFacebook(?string $pixelFacebook): void
-    {
-        $this->pixelFacebook = $pixelFacebook;
     }
 
     public function getUseCookieHandling(): ?bool
@@ -424,25 +374,5 @@ class Setting implements AuditableInterface
     public function setMandatoryCta(?bool $mandatoryCta): void
     {
         $this->mandatoryCta = $mandatoryCta;
-    }
-
-    public function getGoogleAds(): ?string
-    {
-        return $this->googleAds;
-    }
-
-    public function setGoogleAds(?string $googleAds): void
-    {
-        $this->googleAds = $googleAds;
-    }
-
-    public function getBingAds(): ?string
-    {
-        return $this->bingAds;
-    }
-
-    public function setBingAds(?string $bingAds): void
-    {
-        $this->bingAds = $bingAds;
     }
 }
