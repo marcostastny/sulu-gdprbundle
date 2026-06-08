@@ -15,9 +15,9 @@ It also allows you to manage the consent banner by using the [Tarteaucitron](htt
 
 ## Requirements
 
-* PHP >= 8.0
-* Sulu >= 2.5.*
-* Symfony >= 5.4
+* PHP >= 8.2
+* Sulu >= 3.0.*
+* Symfony >= 6.4
 * Composer
 
 ## Installation
@@ -43,8 +43,20 @@ Enable the bundle by adding it to the list of registered bundles in the `config/
  ```
 
 ### Update schema (for dev environnement)
+
+Sulu uses two kernels, so run the schema update on the admin console:
+
 ```shell script
-bin/console do:sch:up --force
+bin/adminconsole doctrine:schema:update --force
+```
+
+### Publish the assets
+
+The bundle ships the Tarteaucitron library and the consent runtime (`gdpr-consent.js`).
+Publish them to your `public/` directory, otherwise the banner cannot load:
+
+```shell script
+bin/adminconsole assets:install --symlink
 ```
 
 ## Bundle Config
@@ -56,6 +68,24 @@ gdpr_admin_api:
   prefix: /admin/api
 ```
 
+### Render the banner
+
+Call the `gdpr_script()` Twig function in the `<head>` of your layout (e.g. `master.html.twig`).
+It renders nothing until you enable "Use cookies management?" in the settings.
+
+```twig
+<head>
+    {# ... #}
+    {{ gdpr_script() }}
+</head>
+```
+
+### Permissions
+
+The bundle registers the `gdpr_settings.settings` security context. Grant your role **View**,
+**Add**, **Edit** and **Delete** for it under *Settings → Roles*, otherwise the GDPR settings and
+integrations are hidden or read‑only.
+
 ## Upgrading from v1 (single tracker → integrations)
 
 v2 replaces the fixed provider fields (single Google Analytics code, etc.) with the
@@ -63,17 +93,17 @@ v2 replaces the fixed provider fields (single Google Analytics code, etc.) with 
 
 ```shell script
 # 1. create the new tables WITHOUT dropping the legacy columns yet
-bin/console doctrine:schema:update --dump-sql      # review
+bin/adminconsole doctrine:schema:update --dump-sql      # review
 #    run only the "CREATE TABLE gdpr_integration ..." statements, or use a migration
 
 # 2. copy the legacy tracking codes into integrations
-bin/console gdpr:integrations:migrate-settings     # --locales=de,en
+bin/adminconsole gdpr:integrations:migrate-settings     # --locales=de,en
 
 # 3. now let the schema drop the legacy columns and add foreign keys
-bin/console doctrine:schema:update --force
+bin/adminconsole doctrine:schema:update --force
 ```
 
-On a fresh install (no v1 data) just run `bin/console doctrine:schema:update --force`.
+On a fresh install (no v1 data) just run `bin/adminconsole doctrine:schema:update --force`.
 
 Because the Integrations list adds create/delete operations to the existing
 `gdpr_settings.settings` security context, grant **Add** and **Delete** for that context to your
