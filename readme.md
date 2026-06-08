@@ -118,6 +118,8 @@ To use the GDPR management of the bundle, just check the "Use cookies management
 The **Parameters** section will help you manage the Tarteaucitron banner, which displays the consent banner.
 There are plenty of parameters, so don't hesitate to visit the repository of Tarteaucitron.
 
+![GDPR settings](docs/images/settings_details.png)
+
 The **Integrations** tab is where you add the individual scripts/services that the banner asks
 consent for (see below).
 
@@ -127,12 +129,12 @@ Each tracker, script or embed you want to gate behind consent is configured as a
 on the **Integrations** tab of the GDPR settings. The list is localized — use the language switcher
 to edit the texts shown in the banner per language.
 
-![](img/integrations-list.png)
+![Integrations list](docs/images/settings_integrations.png)
 
 Click **Add** (or a row) to open the full‑page form. The **Type** field decides which other fields
 are shown:
 
-![](img/integration-form.png)
+![Integration form](docs/images/settings_integrations_detail.png)
 
 | Type | What it does | Fields |
 |------|--------------|--------|
