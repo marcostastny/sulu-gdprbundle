@@ -126,7 +126,9 @@ class SettingAdmin extends Admin
                 "Setting" => [
                     Setting::SECURITY_CONTEXT => [
                         PermissionTypes::VIEW,
+                        PermissionTypes::ADD,
                         PermissionTypes::EDIT,
+                        PermissionTypes::DELETE,
                     ],
                 ],
             ],
