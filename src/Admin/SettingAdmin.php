@@ -67,7 +67,7 @@ class SettingAdmin extends Admin
 
             // Integrations list as a second tab of the settings view.
             $viewCollection->add(
-                $this->viewBuilderFactory->createListViewBuilder(static::INTEGRATIONS_LIST_VIEW, "/integrations")
+                $this->viewBuilderFactory->createListViewBuilder(static::INTEGRATIONS_LIST_VIEW, "/integrations/:locale")
                     ->setResourceKey(Integration::RESOURCE_KEY)
                     ->setListKey(Integration::LIST_KEY)
                     ->setTabTitle("gdpr_settings.integrations")
