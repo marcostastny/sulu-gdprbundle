@@ -6,6 +6,7 @@
 
     var accepted = {};
     var listeners = { accept: {}, reject: {} };
+    var booted = [];
 
     function fire(kind, key) {
         if (kind === "accept") {
@@ -97,14 +98,57 @@
         (t.job = t.job || []).push(key);
     }
 
+    // tarteaucitron key of an integration: preconfigured providers run as native services.
+    function engineKey(integration) {
+        return integration.type === "preconfigured" && integration.provider ? integration.provider : integration.key;
+    }
+
+    function findIntegration(key) {
+        for (var i = 0; i < booted.length; i++) {
+            if (booted[i].key === key) { return booted[i]; }
+        }
+        return null;
+    }
+
     window.gdpr = {
         onAccept: function (key, cb) { subscribe("accept", key, cb); },
         onReject: function (key, cb) { subscribe("reject", key, cb); },
+        /** Enabled integrations with their banner texts, for a custom consent UI. */
+        integrations: function () {
+            return booted.map(function (i) {
+                return {
+                    key: i.key,
+                    title: i.title || i.key,
+                    description: i.description || "",
+                    type: i.type,
+                    provider: i.provider || null,
+                    consentCategories: i.consentCategories || [],
+                    needConsent: i.needConsent !== false
+                };
+            });
+        },
+        /** Stored choice for an integration: true, false, or null if the visitor has not decided yet. */
+        choice: function (key) {
+            var t = window.tarteaucitron, integration = findIntegration(key);
+            if (!t || !t.cookie || !integration) { return null; }
+            var cookie = t.cookie.read(), k = engineKey(integration);
+            if (cookie.indexOf("!" + k + "=true") >= 0) { return true; }
+            if (cookie.indexOf("!" + k + "=false") >= 0) { return false; }
+            return null;
+        },
+        /** Accept (true) or decline (false) an integration, exactly like its switch in the banner. */
+        set: function (key, allowed) {
+            var t = window.tarteaucitron, integration = findIntegration(key);
+            if (!t || !t.userInterface || !integration) { return; }
+            var k = engineKey(integration);
+            t.userInterface.respond(document.getElementById(k + "Allowed") || { id: k + "Allowed" }, !!allowed);
+        },
         boot: function (params, integrations) {
             var t = window.tarteaucitron;
             if (!t) { return; }
             t.user = t.user || {};
             t.job = t.job || [];
+            booted = integrations || [];
             (integrations || []).forEach(function (integration) {
                 if (integration.type === "preconfigured") {
                     // GCM grant happens via tarteaucitron's own gcm services for native jobs;

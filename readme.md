@@ -174,6 +174,14 @@ window.gdpr.onReject('googlemaps', function () {
 });
 ```
 
+For a **custom consent UI** (your own banner instead of tarteaucitron's), the runtime also exposes:
+
+```js
+window.gdpr.integrations(); // [{ key, title, description, type, provider, consentCategories, needConsent }]
+window.gdpr.choice('googlemaps'); // true | false | null (not decided yet)
+window.gdpr.set('googlemaps', true); // accept (true) or decline (false), stored like the banner's switch
+```
+
 `onAccept` callbacks registered *after* the visitor already accepted are fired immediately. The same
 signals are also dispatched as DOM events on `document`, if you prefer listening to those:
 
