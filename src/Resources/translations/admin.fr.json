@@ -1,10 +1,5 @@
 {
   "gdpr.settings": "Gestion des scripts RGPD",
-  "gdpr_settings.googleTagManager": "Google tag manager",
-  "gdpr_settings.googleAnalyticsGtagJs": "Google analytics (gtag.js)",
-  "gdpr_settings.pixelFacebook": "Pixel Facebook",
-  "gdpr_settings.googleAds": "Google Ads",
-  "gdpr_settings.bingAds": "Bing Ads",
   "gdpr_settings.useCookieHandling": "Utiliser la gestion des cookies ?",
   "gdpr_settings.services": "Services",
   "gdpr_settings.parameters": "Paramètres",

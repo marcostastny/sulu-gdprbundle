@@ -49,11 +49,6 @@ class SettingController extends AbstractRestController implements SecuredControl
      */
     public function mapDataToEntity(array $data, Setting $entity): void
     {
-        $googleTagManager = $data['googleTagManager'] ?? null;
-        $googleAnalyticsGtagJs = $data['googleAnalyticsGtagJs'] ?? null;
-        $bingAds = $data['bingAds'] ?? null;
-        $pixelFacebook = $data['pixelFacebook'] ?? null;
-        $googleAds = $data['googleAds'] ?? null;
         $useCookieHandling = $data['useCookieHandling'] ?? null;
         $privacyUrl = $data['privacyUrl'] ?? "";
         $bodyPosition = $data['bodyPosition'] ?? "bottom";
@@ -79,11 +74,6 @@ class SettingController extends AbstractRestController implements SecuredControl
         $mandatory = $data['mandatory'] ?? true;
         $mandatoryCta = $data['mandatoryCta'] ?? true;
 
-        $entity->setGoogleTagManager($googleTagManager);
-        $entity->setGoogleAnalyticsGtagJs($googleAnalyticsGtagJs);
-        $entity->setBingAds($bingAds);
-        $entity->setPixelFacebook($pixelFacebook);
-        $entity->setGoogleAds($googleAds);
         $entity->setUseCookieHandling($useCookieHandling);
         $entity->setPrivacyUrl($privacyUrl);
         $entity->setBodyPosition($bodyPosition);
