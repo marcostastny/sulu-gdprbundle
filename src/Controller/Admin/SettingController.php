@@ -51,6 +51,7 @@ class SettingController extends AbstractRestController implements SecuredControl
     {
         $useCookieHandling = $data['useCookieHandling'] ?? null;
         $privacyUrl = $data['privacyUrl'] ?? "";
+        $privacyPage = $data['privacyPage'] ?? null;
         $bodyPosition = $data['bodyPosition'] ?? "bottom";
         $hashtag = $data['hashtag'] ?? "#tarteaucitron";
         $cookieName = $data['cookieName'] ?? "tarteaucitron";
@@ -76,6 +77,7 @@ class SettingController extends AbstractRestController implements SecuredControl
 
         $entity->setUseCookieHandling($useCookieHandling);
         $entity->setPrivacyUrl($privacyUrl);
+        $entity->setPrivacyPage(\is_string($privacyPage) ? $privacyPage : null);
         $entity->setBodyPosition($bodyPosition);
         $entity->setHashtag($hashtag);
         $entity->setCookieName($cookieName);

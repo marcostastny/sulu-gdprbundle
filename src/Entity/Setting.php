@@ -32,6 +32,11 @@ class Setting implements AuditableInterface
     #[Serializer\Expose]
     private ?string $privacyUrl = null;
 
+    /** Sulu page (uuid) linked as privacy policy, in the visitor's locale; takes precedence over privacyUrl. */
+    #[ORM\Column(type: 'string', length: 36, nullable: true)]
+    #[Serializer\Expose]
+    private ?string $privacyPage = null;
+
     #[ORM\Column(type: 'string', nullable: true)]
     #[Serializer\Expose]
     private ?string $bodyPosition = null;
@@ -154,6 +159,16 @@ class Setting implements AuditableInterface
     public function setPrivacyUrl(?string $privacyUrl): void
     {
         $this->privacyUrl = $privacyUrl;
+    }
+
+    public function getPrivacyPage(): ?string
+    {
+        return $this->privacyPage;
+    }
+
+    public function setPrivacyPage(?string $privacyPage): void
+    {
+        $this->privacyPage = $privacyPage ?: null;
     }
 
     public function getBodyPosition(): ?string

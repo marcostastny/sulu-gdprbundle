@@ -4,7 +4,7 @@
 <script>
     window.gdpr.boot(
         {
-            "privacyUrl": "{{ setting.privacyUrl }}",
+            "privacyUrl": "{{ privacyUrl|e('js') }}",
             "bodyPosition": "{{ setting.bodyPosition }}",
             "hashtag": "{{ setting.hashtag }}",
             "cookieName": "{{ setting.cookieName }}",

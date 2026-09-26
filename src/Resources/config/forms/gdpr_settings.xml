@@ -18,9 +18,16 @@
                 <title>gdpr_settings.parameters</title>
             </meta>
             <properties>
+                <property name="privacyPage" type="single_page_selection" colspan="4">
+                    <meta>
+                        <title>gdpr_settings.privacyPage</title>
+                        <info_text>gdpr_settings.privacyPage_info</info_text>
+                    </meta>
+                </property>
                 <property name="privacyUrl" type="text_line" colspan="4">
                     <meta>
                         <title>gdpr_settings.privacyUrl</title>
+                        <info_text>gdpr_settings.privacyUrl_info</info_text>
                     </meta>
                 </property>
                 <property name="bodyPosition" type="single_select" colspan="4">

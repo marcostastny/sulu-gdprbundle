@@ -58,7 +58,35 @@ class SettingsExtension extends AbstractExtension
 
         return $this->environment->render("@GDPR/twig/scripts.html.twig", [
             "setting" => $setting,
+            "privacyUrl" => $this->privacyUrl($setting),
             "integrations" => $integrations,
         ]);
+    }
+
+    /**
+     * The selected privacy page in the current locale (via Sulu's sulu_page_load /
+     * sulu_content_path), falling back to the static privacy URL.
+     */
+    private function privacyUrl(Setting $setting): string
+    {
+        $uuid = $setting->getPrivacyPage();
+        $load = $uuid ? $this->environment->getFunction('sulu_page_load')?->getCallable() : null;
+        $path = $this->environment->getFunction('sulu_content_path')?->getCallable();
+
+        if ($load && $path) {
+            try {
+                $page = $load($uuid, ['url' => 'url']);
+            } catch (\Throwable) {
+                $page = null; // page deleted or not published in this locale
+            }
+
+            // Only requested properties are resolved; 'url' is the locale-specific page path.
+            $url = \is_array($page) ? ($page['url'] ?? null) : null;
+            if (\is_string($url) && '' !== $url) {
+                return (string) $path($url);
+            }
+        }
+
+        return (string) $setting->getPrivacyUrl();
     }
 }

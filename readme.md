@@ -116,6 +116,11 @@ The bundle is only composed of the settings, which make the management of the GD
 To use the GDPR management of the bundle, just check the "Use cookies management?". All the other options should be display.
 
 The **Parameters** section will help you manage the Tarteaucitron banner, which displays the consent banner.
+
+**Privacy page:** select the privacy policy page in *Privacy page*; the banner links it in the visitor's language
+(e.g. `/de/datenschutz` and `/en/datenschutz`). *Privacy URL* is only used when no page is selected, e.g. for an
+external link. After updating, add the new column with `bin/adminconsole doctrine:schema:update --force`
+(`gdpr_settings.privacy_page`).
 There are plenty of parameters, so don't hesitate to visit the repository of Tarteaucitron.
 
 ![GDPR settings](docs/images/settings_details.png)
