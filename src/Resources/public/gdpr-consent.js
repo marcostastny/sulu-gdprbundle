@@ -148,6 +148,11 @@
             if (!t) { return; }
             t.user = t.user || {};
             t.job = t.job || [];
+            // Basic consent mode: with tarteaucitron's default (false), Google/Bing services
+            // still load on refusal and send cookieless pings ("advanced consent mode").
+            if (params.softConsentMode === undefined) {
+                params.softConsentMode = true;
+            }
             booted = integrations || [];
             (integrations || []).forEach(function (integration) {
                 if (integration.type === "preconfigured") {
